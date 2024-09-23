@@ -1,0 +1,83 @@
+/* ESTILOS GENERALES */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #d8ccb2;
+    color: #2a2344;
+    margin: 0;
+    padding: 0;
+}
+
+/* ESTILOS DEL FOOTER */
+footer {
+    background-color: #495168;
+    padding: 20px;
+    text-align: center;
+    color: #ccbd9e;
+}
+.footer-content {
+    margin: 0 auto;
+    max-width: 800px;
+}
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+.footer-links li {
+    display: inline;
+    margin: 0 10px;
+}
+
+/* ESTILOS DEL HEADER */
+header {
+    background-color: #2a2344;
+    color: #ccbd9e;
+    padding: 10px 0;
+}
+.header-content {
+    margin: 0 auto;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-links {
+    list-style: none;
+    padding: 0;
+}
+.nav-links li {
+    display: inline;
+    margin: 0 15px;
+}
+.nav-links li a {
+    color: #ccbd9e;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.nav-links li a:hover {
+    color: #495168;
+}
+
+/* ESTILOS DEL HOME */
+.welcome-section {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #d8ccb2;
+    border-radius: 8px;
+}
+.welcome-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #495168;
+}
+.welcome-section p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+.welcome-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+.welcome-section ul li {
+    margin: 10px 0;
+}
