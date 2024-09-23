@@ -1,0 +1,17 @@
+<div class="profile-user-container">
+  <h2>Perfil de Usuario: {{user.name}}</h2>
+  <div class="user-details">
+    <p><strong>Email:</strong> {{user.email}}</p>
+    <p><strong>Mascotas Asignadas:</strong></p>
+    <ul>
+      {{#each user.pets}}
+        <li>
+          <a href="/api/pets/{{this._id}}">{{this.name}}</a>
+        </li>
+      {{else}}
+        <li>No tienes mascotas asignadas.</li>
+      {{/each}}
+    </ul>
+  </div>
+  <a href="/pets" class="btn-back">Ver Mascotas</a>
+</div>

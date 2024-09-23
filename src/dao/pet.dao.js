@@ -13,7 +13,7 @@ class PetDAO {
 
   async getPetById(petId){
     try{
-      const pet = await petModel.findById(petId).populate('owner')
+      const pet = await petModel.findById(petId).populate('owner').lean()
       return pet
     }catch(error){
       console.log("Error en getPetById de pet.dao.js")
@@ -23,7 +23,7 @@ class PetDAO {
 
   async getAllPets(){
     try{
-      const pets = await petModel.find().populate('owner')
+      const pets = await petModel.find().populate('owner').lean()
       return pets
     }catch(error){
       console.log("Error en getAllPets de pet.dao.js")

@@ -33,6 +33,10 @@ header {
     color: #ccbd9e;
     padding: 10px 0;
 }
+a{
+    color: #ccbd9e;
+    text-decoration: none;
+}
 .header-content {
     margin: 0 auto;
     max-width: 800px;
@@ -46,12 +50,13 @@ header {
 }
 .nav-links li {
     display: inline;
-    margin: 0 15px;
+    margin: 0 10px;
 }
 .nav-links li a {
     color: #ccbd9e;
     text-decoration: none;
     transition: color 0.3s ease;
+    font-size: 1.1em;
 }
 .nav-links li a:hover {
     color: #495168;
@@ -74,10 +79,305 @@ header {
     font-size: 1.2em;
     margin-bottom: 10px;
 }
-.welcome-section ul {
-    list-style-type: none;
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten en pantallas más pequeñas */
+}
+.card {
+    background-color: #ccbd9e;
+    border-radius: 8px;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 10px; /* Espacio entre las tarjetas */
+}
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+.card h3 {
+    color: #2a2344;
+}
+.card p {
+    color: #2a2344;
+}
+.btn {
+    background-color: #495168;
+    color: #ccbd9e;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+.btn:hover {
+    background-color: #2a2344;
+}
+
+/* ESTILOS PARA LOGIN Y REGISTER */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #d8ccb2;
+    color: #2a2344;
+    margin: 0;
     padding: 0;
 }
-.welcome-section ul li {
-    margin: 10px 0;
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ccbd9e;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+.form-container h2 {
+    color: #2a2344;
+    margin-bottom: 20px;
+}
+.form-container .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+.form-container .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2a2344;
+}
+.form-container .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #495168;
+    border-radius: 4px;
+}
+.form-container .btn {
+    background-color: #495168;
+    color: #ccbd9e;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.form-container .btn:hover {
+    background-color: #2a2344;
+}
+.register-link {
+    margin-top: 20px;
+    color: #2a2344;
+}
+.register-link a {
+    color: #495168;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+.register-link a:hover {
+    color: #2a2344;
+}
+
+/* ESTILOS PARA NOSOTROS */
+.about-section {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #d8ccb2;
+    border-radius: 8px;
+}
+.about-section h2 {
+    color: #495168;
+    margin-bottom: 20px;
+}
+.about-section p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+.about-image {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    height: auto; /* Mantiene la relación de aspecto */
+    border-radius: 8px; /* Opcional: para bordes redondeados */
+}
+
+/* ESTILOS PARA PETS*/
+.pets-section {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #d8ccb2;
+    border-radius: 8px;
+}
+.pets-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.pet-card {
+    background-color: #fff;
+    border: 1px solid #495168;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px; /* Ajusta según tu diseño */
+    height: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.pet-image {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    height: auto; /* Mantiene la relación de aspecto */
+    border-radius: 4px;
+}
+
+/* ESTILOS DEL PERFIL DE MASCOTA */
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #d8ccb2;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+.profile-container h2 {
+    color: #2a2344;
+    margin-bottom: 20px;
+}
+.pet-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.pet-details {
+    text-align: left;
+    margin-bottom: 20px;
+}
+.pet-details p {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+.pet-details h3 {
+    margin-top: 20px;
+    color: #2a2344;
+}
+.btn {
+    background-color: #495168;
+    color: #ccbd9e;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background-color: #2a2344;
+}
+
+/* ESTILOS PARA ASIGNOWNER */
+.assign-owner-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+.assign-owner-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+.assign-owner-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.assign-owner-form label {
+    font-weight: bold;
+    color: #555;
+}
+.assign-owner-form input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.assign-owner-form input[type="email"]:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+.assign-owner-link {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 13px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+.assign-owner-link:hover {
+    background-color: #45a049;
+} 
+.assign-owner-link:active {
+    background-color: #388E3C;
+}
+.error-message {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+} 
+
+/* ESTILOS PARA PROFILEUSER*/
+.profile-user-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+h2 {
+    text-align: center;
+    color: #333;
+}
+.user-details {
+    margin: 20px 0;
+}
+.user-details p {
+    font-size: 16px;
+    color: #555;
+}
+.user-details ul {
+    list-style: none;
+    padding: 0;
+}
+.user-details li {
+    padding: 5px 0;
+}
+.btn-back {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.btn-back:hover {
+    background-color: #0056b3;
 }

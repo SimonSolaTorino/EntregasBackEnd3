@@ -1,0 +1,20 @@
+<div class="pets-section">
+    <h2>Lista de Mascotas</h2>
+    {{#if pets.length}}
+        <div class="pets-container">
+            {{#each pets}}
+                <div class="pet-card">
+                    <h3>{{this.name}}</h3>
+                    <img src="/{{#if pet.photo}}{{pet.photo}}{{else}}nophoto.png{{/if}}" alt="Imagen de {{pet.name}}" class="pet-image" style="width: 50%">
+                    <p>Especie: {{this.species}}</p>
+                    <p>Edad: {{this.age}} año/s</p>
+                    <p>Dueño: {{#if this.owner}}{{this.owner.name}}{{else}}No asignado{{/if}}</p>
+                    <a href="/api/pets/{{this._id}}" class="btn">Ver Perfil</a>
+                    <a href="/pets/{{this._id}}/assignOwner" class="assign-owner-link">Asignar Dueño</a>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <p>No hay mascotas registradas.</p>
+    {{/if}}
+</div>

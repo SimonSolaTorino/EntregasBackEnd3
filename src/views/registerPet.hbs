@@ -1,0 +1,26 @@
+<div class="form-container">
+    <h2>Registrar Mascota</h2>
+    <form class="register-form" action="/api/pets/register" method="POST">
+        <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="photo">Foto:</label>
+            <input type="text" id="photo" name="photo">
+        </div>
+        <div class="form-group">
+            <label for="type">Tipo:</label>
+            <input type="text" id="species" name="species" required>
+        </div>
+        <div class="form-group">
+            <label for="age">Edad:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+            <label for="owner">Propietario:</label>
+            <input type="text" id="owner" name="owner">
+        </div>
+        <button type="submit" class="btn">Registrar Mascota</button>
+    </form>
+</div>

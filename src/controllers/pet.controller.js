@@ -1,5 +1,6 @@
 import { petDao } from '../dao/pet.dao.js';
 import { userDao } from '../dao/user.dao.js';
+import { petModel } from '../models/pet.model.js';
 
 class PetController {
   async createPet(req, res){
@@ -13,13 +14,13 @@ class PetController {
           await owner.save()
         }
       }
-      res.status(201).json({ message: 'Mascota creada con éxito', pet: newPet })
+      res.redirect("/")
     }catch(error){
       console.log("Error en createPet de pet.controller.js")
       console.log(error)
       res.status(500).json({ message: 'Error al crear la mascota' })
     }
-  }
+  } 
 
   async getPetById(req, res){
     const { petId } = req.params
@@ -28,7 +29,7 @@ class PetController {
       if(!pet){
         return res.status(404).json({ message: `Mascota con id ${petId} no encontrada` })
       }
-      res.status(200).json(pet)
+      res.render('profilePet', { pet })
     } catch(error){
       console.log("Error en getPetById de pet.controller.js")
       console.log(error)
@@ -82,27 +83,30 @@ class PetController {
   }
 
   async assignOwnerToPet(req, res){
-    const { petId, ownerId } = req.params
+    const { petId } = req.params
+    const { email } = req.body
     try{
-      const owner = await userDao.getUserById(ownerId)
+      const owner = await userDao.getUserByEmail(email)
       const pet = await petDao.getPetById(petId)
       if (!owner) {
-        return res.status(404).json({ message: `Dueño con id ${ownerId} no encontrado` })
+        return res.status(404).json({ message: `Dueño con mail ${email} no encontrado` })
       }
       if(!pet){
         return res.status(404).json({ message: `Mascota con id ${petId} no encontrada` })
       }
-      pet.owner = ownerId
-      const updatedPet = await pet.save()
+      pet.owner = owner._id
+
+      const updatedPet = await petModel.findByIdAndUpdate(petId,{ owner: owner._id },{ new: true })
       owner.pets.push(updatedPet._id)
       await owner.save()
-      res.status(200).json({ message: 'Dueño asignado correctamente', pet: updatedPet })
+      res.redirect("/pets")
     }catch(error){
       console.log("Error en assignOwnerToPet de pet.controller.js")
       console.log(error)
       res.status(500).json({ message: 'Error al asignar dueño a la mascota' })
     }
   }
+
 }
 
 export const petController = new PetController()

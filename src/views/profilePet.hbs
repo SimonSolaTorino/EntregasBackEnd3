@@ -1,0 +1,25 @@
+<div class="profile-container">
+  <h2>Perfil de la Mascota: {{pet.name}}</h2>
+  <img src="/{{#if pet.photo}}{{pet.photo}}{{else}}nophoto.png{{/if}}" alt="Imagen de {{pet.name}}" class="pet-image">
+  <div class="pet-details">
+    <p><strong>Especie:</strong> {{pet.species}}</p>
+    <p><strong>Edad:</strong> {{pet.age}} años</p>
+    <p><strong>Dueño:</strong> {{#if pet.owner}} {{pet.owner.name}} {{else}} No asignado {{/if}}</p>
+    
+    <h3>Historial de Visitas</h3>
+    <ul>
+      {{#each pet.history}}
+        <li><strong>Fecha:</strong> {{this.date_visit}}, <strong>Descripción:</strong> {{this.description}}</li>
+      {{/each}}
+    </ul>
+
+    <h3>Vacunas</h3>
+    <ul>
+      {{#each pet.vaccines}}
+        <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </div>
+
+  <a href="/pets" class="btn">Volver a Mascotas</a>
+</div>

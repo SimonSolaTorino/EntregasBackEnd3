@@ -13,10 +13,10 @@ class UserDAO {
 
   async getUserById(userId) {
     try {
-      const user = await userModel.findById(userId)
+      const user = await userModel.findById(userId).populate('pets').lean()
       return user
     } catch (error) {
-        console.log("Error en getUserById de user.dao.js")
+        console.log("Error en getUserById de user.dao.js").populate('pets')
         throw error
     }
   }

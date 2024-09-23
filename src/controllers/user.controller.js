@@ -7,7 +7,7 @@ class UserController {
     try{
       const hashedPassword = await hashPassword(password)
       const newUser = await userDao.createUser({ name, email, password: hashedPassword })
-      res.status(201).json({ message: 'Usuario creado con éxito', user: newUser })
+      res.redirect('/login')
     }catch(error){
       console.log("Error en createUser de user.controller.js")
       console.log(error)
@@ -88,7 +88,7 @@ class UserController {
       if(!isMatch){
         return res.status(401).json({ message: 'Contraseña incorrecta' })
       }
-      res.status(200).json({ message: 'Inicio de sesión exitoso', user })
+      res.redirect(`/profile/${user._id}`)
     }catch(error){
       console.log("Error en loginUser de user.controller.js")
       console.log(error)

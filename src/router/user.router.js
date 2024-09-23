@@ -1,10 +1,9 @@
 import { Router } from 'express';
 import { userController } from '../controllers/user.controller.js';
-import { hashPassword } from '../utils/hash.utils.js';
 
 const router = Router()
 
-router.post('/', async (req, res)=>{userController.createUser(req, res)})
+router.post('/register', async (req, res)=>{userController.createUser(req, res)})
 
 router.post('/login', (req, res)=>{userController.loginUser(req, res)})
 
