@@ -12,7 +12,7 @@ import viewsRouter from "./router/views.router.js";
 //INICIALIZAMOS APP
 const app = express()
 const PORT = 8080
-
+ 
 //EXPRESS CONFIG
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
