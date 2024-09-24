@@ -5,7 +5,11 @@
             {{#each pets}}
                 <div class="pet-card">
                     <h3>{{this.name}}</h3>
-                    <img src="/{{#if pet.photo}}{{pet.photo}}{{else}}nophoto.png{{/if}}" alt="Imagen de {{pet.name}}" class="pet-image" style="width: 50%">
+                    {{#if pet.photo}}
+                    <img src="/{{pet.photo}}" alt="Imagen de {{pet.name}}" class="pet-image" style="width: 50%">
+                    {{else}}
+                    <img src="/nophoto.png" alt="Imagen de {{pet.name}}" class="pet-image" style="width: 50%">
+                    {{/if}}
                     <p>Especie: {{this.species}}</p>
                     <p>Edad: {{this.age}} año/s</p>
                     <p>Dueño: {{#if this.owner}}{{this.owner.name}}{{else}}No asignado{{/if}}</p>

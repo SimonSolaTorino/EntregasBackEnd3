@@ -7,6 +7,7 @@ import handlebars from "express-handlebars";
 import userRouter from "./router/user.router.js";
 import petRouter from "./router/pet.router.js";
 import viewsRouter from "./router/views.router.js";
+import mocksRouter from "./router/mocks.router.js";
 
 
 //INICIALIZAMOS APP
@@ -33,6 +34,7 @@ mongoose.connect('mongodb+srv://simonsolat:Gordosexotkm1@cluster0.cjjajx4.mongod
 //ROUTES CONFIG
 app.use("/api/pets", petRouter)
 app.use("/api/user", userRouter)
+app.use("/api/mocks", mocksRouter)
 app.use('/', viewsRouter)
 
 //START SERVER
