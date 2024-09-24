@@ -5,16 +5,18 @@
             {{#each pets}}
                 <div class="pet-card">
                     <h3>{{this.name}}</h3>
-                    {{#if pet.photo}}
-                    <img src="/{{pet.photo}}" alt="Imagen de {{pet.name}}" class="pet-image" style="width: 50%">
+                    {{#if this.photo.[1]}}
+                        <img src="{{this.photo.[1]}}" alt="Imagen de {{this.name}}" class="pet-image" style="width: 50%">
                     {{else}}
-                    <img src="/nophoto.png" alt="Imagen de {{pet.name}}" class="pet-image" style="width: 50%">
+                        <img src="/{{this.photo.[0]}}" alt="Imagen de {{this.name}}" class="pet-image" style="width: 50%">
                     {{/if}}
                     <p>Especie: {{this.species}}</p>
                     <p>Edad: {{this.age}} año/s</p>
                     <p>Dueño: {{#if this.owner}}{{this.owner.name}}{{else}}No asignado{{/if}}</p>
                     <a href="/api/pets/{{this._id}}" class="btn">Ver Perfil</a>
-                    <a href="/pets/{{this._id}}/assignOwner" class="assign-owner-link">Asignar Dueño</a>
+                    {{#unless this.owner}}
+                        <a href="/pets/{{this._id}}/assignOwner" class="assign-owner-link">Asignar Dueño</a>
+                    {{/unless}}
                 </div>
             {{/each}}
         </div>

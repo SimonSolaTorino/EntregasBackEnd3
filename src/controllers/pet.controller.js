@@ -4,9 +4,15 @@ import { petModel } from '../models/pet.model.js';
 
 class PetController {
   async createPet(req, res){
-    const { name, species, age, ownerId } = req.body
+    const { name, species, age, ownerId, photoURL } = req.body
+    let photo
+    if(photoURL){
+      photo = ["nophoto.png", photoURL]
+    }else{
+      photo = ["nophoto.png"]
+    }
     try{
-      const newPet = await petDao.createPet({ name, species, age, owner: ownerId })
+      const newPet = await petDao.createPet({ name, species, age, owner: ownerId, photo })
       if(ownerId){
         const owner = await userDao.getUserById(ownerId)
         if(owner){

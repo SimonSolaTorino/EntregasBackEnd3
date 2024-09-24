@@ -225,6 +225,7 @@ body {
     width: 200px; /* Ajusta según tu diseño */
     height: 350px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
 }
 .pet-image {
     max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
@@ -250,7 +251,7 @@ body {
     width: 100%;
     max-width: 300px;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .pet-details {
     text-align: left;

@@ -1,6 +1,10 @@
 <div class="profile-container">
   <h2>Perfil de la Mascota: {{pet.name}}</h2>
-  <img src="/{{#if pet.photo}}{{pet.photo}}{{else}}nophoto.png{{/if}}" alt="Imagen de {{pet.name}}" class="pet-image">
+  {{#if pet.photo.[1]}}
+    <img src="{{pet.photo.[1]}}" alt="Imagen de {{pet.name}}" class="pet-image">
+  {{else}}
+    <img src="/{{pet.photo.[0]}}" alt="Imagen de {{pet.name}}" class="pet-image">
+  {{/if}}
   <div class="pet-details">
     <p><strong>Especie:</strong> {{pet.species}}</p>
     <p><strong>Edad:</strong> {{pet.age}} años</p>
