@@ -1,11 +1,16 @@
 import { Router } from 'express';
 import { petDao } from "../dao/pet.dao.js";
 import { userDao } from '../dao/user.dao.js';
+import { isAuthenticated, isAdmin } from '../middlewares/auth.middleware.js';
 
 const router = Router()
 
 router.get('/', (req, res) => {
-    res.render('home')
+    res.render('home', { userId: req.session.userId })
+})
+
+router.get('/workingOn', (req, res)=>{
+    res.render('working')
 })
 
 router.get('/login', (req, res) => {
@@ -16,7 +21,7 @@ router.get('/registerUser', (req, res) => {
     res.render('registerUser')
 })
 
-router.get('/registerPet', (req, res) => {
+router.get('/registerPet', isAuthenticated, isAdmin, (req, res) => {
     res.render('registerPet')
 })
 
@@ -35,7 +40,7 @@ router.get('/pets', async (req, res) => {
 })
 
 
-router.get('/pets/:idPet/assignOwner', async (req, res)=>{
+router.get('/pets/:idPet/assignOwner', isAuthenticated, isAdmin, async (req, res)=>{
     const { idPet } = req.params
     try{
       const pet = await petDao.getPetById(idPet)
@@ -49,10 +54,10 @@ router.get('/pets/:idPet/assignOwner', async (req, res)=>{
     }
 })
 
-router.get('/profile/:id', async (req, res)=>{
-    const { id } = req.params;
+router.get('/profile/:email', isAuthenticated, async (req, res)=>{
+    const { email } = req.params;
     try{
-        const user = await userDao.getUserById(id)
+        const user = await userDao.getUserByEmail(email)
         const userData = {
             name: user.name,
             email: user.email,

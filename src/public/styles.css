@@ -382,3 +382,53 @@ h2 {
 .btn-back:hover {
     background-color: #0056b3;
 }
+
+/* Estilos para la vista Not Allowed */
+.not-allowed-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ccbd9e;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+.not-allowed-container h2 {
+    color: #2a2344;
+    margin-bottom: 15px;
+}
+.not-allowed-container p {
+    color: #2a2344;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+.not-allowed-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+.not-allowed-container .btn {
+    background-color: #495168;
+    color: #ccbd9e;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+.not-allowed-container .btn:hover {
+    background-color: #2a2344;
+}
+
+/*ESTILOS PARA EL WORKING*/
+.working-container {
+    text-align: center;
+    margin: 50px;
+}
+.working-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}

@@ -18,6 +18,7 @@ class UserController {
   async getUserById(req, res){
     const { userId } = req.params
     try{
+      console.log(userId)
       const user = await userDao.getUserById(userId)
       if(!user){
         return res.status(404).json({ message: `Usuario con id ${userId} no encontrado` })
@@ -26,6 +27,21 @@ class UserController {
       res.status(200).json(user)
     }catch(error){
       console.log("Error en getUserById de user.controller.js")
+      console.log(error)
+      res.status(500).json({ message: 'Error al obtener el usuario' })
+    }
+  }
+
+  async getUserByEmail(req, res){
+    const { userEmail } = req.params
+    try{
+      const user = await userDao.getUserByEmail(userEmail)
+      if(!user){
+        return res.status(404).json({ message: `Usuario con email ${userEmail} no encontrado` })
+      }
+      res.status(200).json(user)
+    }catch(error){
+      console.log("Error en getUserByEmail de user.controller.js")
       console.log(error)
       res.status(500).json({ message: 'Error al obtener el usuario' })
     }
@@ -88,11 +104,30 @@ class UserController {
       if(!isMatch){
         return res.status(401).json({ message: 'Contraseña incorrecta' })
       }
-      res.redirect(`/profile/${user._id}`)
+      req.session.userId = user._id
+      req.session.userRole = user.role
+      req.session.userEmail = user.email
+      res.redirect(`/profile/${user.email}`)
     }catch(error){
       console.log("Error en loginUser de user.controller.js")
       console.log(error)
       res.status(500).json({ message: 'Error al iniciar sesión' })
+    }
+  }
+
+  async logoutUser(req, res){
+    try{
+      req.session.destroy((err)=>{
+        if(err){
+          console.log("error al cerrar la sesion.")
+          return res.status(500).json({ message: 'Error al cerrar sesión' } )
+        }
+        res.redirect('/')
+      })
+    }catch(error){
+      console.log("Error en logoutUser de user.controller.js")
+      console.log(error)
+      res.status(500).json({ message: 'Error al cerrar sesión' })
     }
   }
 }

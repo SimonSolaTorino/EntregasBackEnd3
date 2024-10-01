@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { generateMockUsers, generateMockPet } from '../utils/mockingUsers.utils.js';
+import { generateMockUsers, generateMockPet } from '../utils/mockingData.utils.js';
 import { userDao } from '../dao/user.dao.js';
 import { petDao } from '../dao/pet.dao.js';
 

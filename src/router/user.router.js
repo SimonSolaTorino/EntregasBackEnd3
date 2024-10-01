@@ -7,7 +7,11 @@ router.post('/register', async (req, res)=>{userController.createUser(req, res)}
 
 router.post('/login', (req, res)=>{userController.loginUser(req, res)})
 
+router.post('/logout', (req, res)=>{ userController.logoutUser(req, res)})
+
 router.get('/:userId', (req, res)=>{userController.getUserById(req, res)})
+
+router.get('/profile/:userEmail', (req, res)=>{userController.getUserByEmail(req, res)})
 
 router.get('/', (req, res)=>{userController.getAllUsers(req, res)})
 

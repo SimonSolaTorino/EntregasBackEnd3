@@ -1,14 +1,22 @@
 <header>
   <div class="header-content">
     <h1 style="display: flex; flex-direction: row; align-items: center;">
-        <img style="width: 25%" src="/headerlogo.png" alt="header-logo">
-        <a href="/">API PETS!</a>
+      <img style="width: 25%" src="/headerlogo.png" alt="header-logo">
+      <a href="/">API PETS!</a>
     </h1>
     <nav style="text-wrap: nowrap">
       <ul class="nav-links">
         <li><a href="/">Inicio</a></li>
         <li><a href="/pets">Mascotas</a></li>
-        <li><a href="/login">Login!</a></li>
+        {{#if isLoggedIn}}
+          <li>
+            <form action="/api/user/logout" method="POST" style="display: inline;">
+              <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer;">Logout</button>
+            </form>
+          </li>
+        {{else}}
+          <li><a href="/login">Login!</a></li>
+        {{/if}}
       </ul>
     </nav>
   </div>
