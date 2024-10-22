@@ -4,6 +4,7 @@ import path from "path";
 import cookieParser from "cookie-parser";
 import handlebars from "express-handlebars";
 import session from 'express-session';
+import swaggerSetup from './swagger.js';
 import __dirname from "./dirname.js";
 import userRouter from "./router/user.router.js";
 import petRouter from "./router/pet.router.js";
@@ -23,7 +24,7 @@ app.use(cookieParser())
 //SESSION CONFIG
 app.use(
     session({
-        secret: '', 
+        secret: 'BudaLaMejor1', 
         resave: false,
         saveUninitialized: false,
         cookie: {
@@ -34,7 +35,7 @@ app.use(
 app.use((req, res, next) => {
     res.locals.isLoggedIn = req.session.userId ? true : false;
     res.locals.userEmail = req.session.userEmail || '';
-    res.locals.userName = req.session.userName || ''; // O el campo que uses
+    res.locals.userName = req.session.userName || '';
     next();
      
 })
@@ -48,7 +49,10 @@ app.set("view engine", "hbs")
 app.set("views", path.join(__dirname, "views"))
 
 //MONGOOSE CONFIG
-mongoose.connect('', {dbName: ''}).then(()=>{console.log("conectado a mongo")}).catch((error)=>{console.log(`Error al conectar a mongo: ${error}`)})
+mongoose.connect('mongodb+srv://simonsolat:SimonDev1@cluster0.cjjajx4.mongodb.net/', {dbName: 'EntregaBackEnd3'}).then(()=>{console.log("conectado a mongo")}).catch((error)=>{console.log(`Error al conectar a mongo: ${error}`)})
+
+//SWAGGER CONFIG
+swaggerSetup(app)
 
 //ROUTES CONFIG
 app.use("/api/pets", petRouter)

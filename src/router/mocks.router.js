@@ -4,7 +4,44 @@ import { userDao } from '../dao/user.dao.js';
 import { petDao } from '../dao/pet.dao.js';
 
 const router = Router()
+/**
+ * @swagger
+ * tags:
+ *   name: mocks
+ *   description: API para generar datos aleatoreos en cantidad por medio de GUIS de APIS como postman o insomnia
+ */
 
+/**
+
+/**
+ * @swagger
+ * /users/{num}:
+ *   get:
+ *     summary: Generar una cantidad específica de usuarios mock.
+ *     tags: [mocks]
+ *     description: Retorna una cantidad de usuarios mock según el número proporcionado en los parámetros.
+ *     parameters:
+ *       - in: path
+ *         name: num
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: El número de usuarios mock a generar.
+ *     responses:
+ *       200:
+ *         description: Lista de usuarios generados.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ *       400:
+ *         description: El parámetro debe ser un número positivo.
+ *       500:
+ *         description: Error al generar usuarios mock.
+ */
 router.get('/users/:num', async (req, res)=>{
     const cantidad_de_usuarios = parseInt(req.params.num)
     if(isNaN(cantidad_de_usuarios) || cantidad_de_usuarios <= 0){
@@ -19,7 +56,25 @@ router.get('/users/:num', async (req, res)=>{
         res.status(500).json({ message: 'Error al generar usuarios mock.' })
     }
 })
-
+/**
+ * @swagger
+ * /mockingusers:
+ *   get:
+ *     summary: Generar 50 usuarios mock.
+ *     tags: [mocks]
+ *     description: Retorna una lista con 50 usuarios mock generados aleatoriamente.
+ *     responses:
+ *       200:
+ *         description: Lista de 50 usuarios generados.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ *       500:
+ *         description: Error al generar usuarios mock.
+ */
 router.get('/mockingusers', async (req, res) => {
     try{
         const users = await generateMockUsers(50)
@@ -30,7 +85,36 @@ router.get('/mockingusers', async (req, res) => {
         res.status(500).json({ message: 'Error al generar usuarios mock' })
     }
 })
-
+/**
+ * @swagger
+ * /generateData:
+ *   post:
+ *     summary: Generar usuarios y mascotas mock y guardarlos en la base de datos.
+ *     tags: [mocks]
+ *     description: Genera una cantidad especificada de usuarios y mascotas mock, y los inserta en la base de datos.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               cant_user:
+ *                 type: integer
+ *                 minimum: 1
+ *                 description: Número de usuarios mock a generar.
+ *               cant_pets:
+ *                 type: integer
+ *                 minimum: 1
+ *                 description: Número de mascotas mock a generar.
+ *     responses:
+ *       201:
+ *         description: Datos generados y guardados exitosamente.
+ *       400:
+ *         description: Debe proporcionar la cantidad de usuarios y mascotas a generar.
+ *       500:
+ *         description: Error al generar e insertar los datos.
+ */
 router.post('/generateData', async (req, res)=>{
     const { cant_user, cant_pets } = req.body;
     
