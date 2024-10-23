@@ -168,3 +168,16 @@ Para ejecutar esta aplicación, necesitas:
 
 ## Docker
 Esta es la URL de la imagen de Docker: https://hub.docker.com/r/simonsolat/entregafinal-coderbackend3
+
+## Dependencias
+Este proyecto utiliza las siguientes dependencias:
+- `express`: Framework para construir aplicaciones web.
+- `express-session`: Middleware para manejar sesiones.
+- `mongoose`: ODM para MongoDB.
+- `bcrypt`: Librería para encriptar contraseñas.
+- `@faker-js/faker`: Generador de datos falsos para pruebas.
+- `swagger-jsdoc`: Generador de documentación Swagger.
+- `swagger-ui-express`: Middleware para servir la documentación Swagger.
+- `express-handlebars`: Motor de plantillas para Express.
+- `cookie-parser`: Middleware para manejar cookies.
+- `dotenv`: Cargar variables de entorno desde un archivo `.env`.
