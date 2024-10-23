@@ -24,7 +24,7 @@ app.use(cookieParser())
 //SESSION CONFIG
 app.use(
     session({
-        secret: 'BudaLaMejor1', 
+        secret: '', 
         resave: false,
         saveUninitialized: false,
         cookie: {
@@ -49,7 +49,7 @@ app.set("view engine", "hbs")
 app.set("views", path.join(__dirname, "views"))
 
 //MONGOOSE CONFIG
-mongoose.connect('mongodb+srv://simonsolat:SimonDev1@cluster0.cjjajx4.mongodb.net/', {dbName: 'EntregaBackEnd3'}).then(()=>{console.log("conectado a mongo")}).catch((error)=>{console.log(`Error al conectar a mongo: ${error}`)})
+mongoose.connect('', {dbName: ''}).then(()=>{console.log("conectado a mongo")}).catch((error)=>{console.log(`Error al conectar a mongo: ${error}`)})
 
 //SWAGGER CONFIG
 swaggerSetup(app)

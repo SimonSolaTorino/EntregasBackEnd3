@@ -1,0 +1,170 @@
+# API de Gestión de Mascotas y Usuarios
+
+Este proyecto es una API para gestionar usuarios y mascotas, 
+incluyendo funcionalidades de autenticación y autorización. 
+También ofrece vistas para la interacción del usuario.
+
+## Rutas Disponibles
+
+### Mascotas
+- `POST /register`: Registra una nueva mascota (requiere autenticación de administrador).
+  - **Cuerpo de la Solicitud**:
+    - `name`: Nombre de la mascota.
+    - `species`: Especie de la mascota.
+    - `age`: Edad de la mascota.
+    - `breed`: Raza de la mascota.
+  - **Respuestas**:
+    - `201`: Mascota registrada exitosamente.
+    - `403`: Acceso denegado.
+
+- `GET /`: Obtiene todas las mascotas.
+  - **Respuestas**:
+    - `200`: Lista de mascotas.
+
+- `GET /{petId}`: Obtiene una mascota por su ID.
+  - **Parámetros**:
+    - `petId`: ID de la mascota.
+  - **Respuestas**:
+    - `200`: Mascota encontrada.
+    - `404`: Mascota no encontrada.
+
+- `PUT /{petId}`: Actualiza una mascota por su ID.
+  - **Parámetros**:
+    - `petId`: ID de la mascota.
+  - **Cuerpo de la Solicitud**:
+    - `name`: Nombre de la mascota.
+    - `species`: Especie de la mascota.
+    - `age`: Edad de la mascota.
+    - `breed`: Raza de la mascota.
+  - **Respuestas**:
+    - `200`: Mascota actualizada exitosamente.
+    - `404`: Mascota no encontrada.
+
+- `DELETE /{petId}`: Elimina una mascota por su ID.
+  - **Parámetros**:
+    - `petId`: ID de la mascota.
+  - **Respuestas**:
+    - `204`: Mascota eliminada exitosamente.
+    - `404`: Mascota no encontrada.
+
+- `POST /{petId}/assignOwner`: Asigna un dueño a una mascota (requiere autenticación de administrador).
+  - **Parámetros**:
+    - `petId`: ID de la mascota.
+  - **Cuerpo de la Solicitud**:
+    - `ownerId`: ID del dueño.
+  - **Respuestas**:
+    - `200`: Dueño asignado exitosamente.
+    - `403`: Acceso denegado.
+    - `404`: Mascota no encontrada.
+
+### Usuarios
+- `POST /register`: Registra un nuevo usuario.
+  - **Cuerpo de la Solicitud**:
+    - `username`: Nombre de usuario.
+    - `email`: Correo electrónico del usuario.
+    - `password`: Contraseña del usuario.
+  - **Respuestas**:
+    - `201`: Usuario registrado exitosamente.
+    - `400`: Datos de entrada no válidos.
+
+- `POST /login`: Inicia sesión de un usuario.
+  - **Cuerpo de la Solicitud**:
+    - `email`: Correo electrónico del usuario.
+    - `password`: Contraseña del usuario.
+  - **Respuestas**:
+    - `200`: Usuario autenticado exitosamente.
+    - `401`: Credenciales incorrectas.
+
+- `POST /logout`: Cierra sesión del usuario.
+  - **Respuestas**:
+    - `204`: Sesión cerrada exitosamente.
+
+- `GET /{userId}`: Obtiene un usuario por su ID.
+  - **Parámetros**:
+    - `userId`: ID del usuario.
+  - **Respuestas**:
+    - `200`: Usuario encontrado.
+    - `404`: Usuario no encontrado.
+
+- `GET /profile/{userEmail}`: Obtiene un usuario por su correo electrónico.
+  - **Parámetros**:
+    - `userEmail`: Correo electrónico del usuario.
+  - **Respuestas**:
+    - `200`: Usuario encontrado.
+    - `404`: Usuario no encontrado.
+
+- `GET /`: Obtiene todos los usuarios.
+  - **Respuestas**:
+    - `200`: Lista de usuarios.
+
+- `PUT /{userId}`: Actualiza un usuario por su ID.
+  - **Parámetros**:
+    - `userId`: ID del usuario.
+  - **Cuerpo de la Solicitud**:
+    - `username`: Nombre de usuario.
+    - `email`: Correo electrónico del usuario.
+    - `password`: Contraseña del usuario.
+  - **Respuestas**:
+    - `200`: Usuario actualizado exitosamente.
+    - `404`: Usuario no encontrado.
+
+- `DELETE /{userId}`: Elimina un usuario por su ID.
+  - **Parámetros**:
+    - `userId`: ID del usuario.
+  - **Respuestas**:
+    - `204`: Usuario eliminado exitosamente.
+    - `404`: Usuario no encontrado.
+
+### Vistas
+- `GET /`: Obtiene la vista principal.
+  - **Respuestas**:
+    - `200`: Vista principal cargada exitosamente.
+
+- `GET /workingOn`: Obtiene la vista de trabajo en progreso.
+  - **Respuestas**:
+    - `200`: Vista de trabajo en progreso cargada exitosamente.
+
+- `GET /login`: Obtiene la vista de inicio de sesión.
+  - **Respuestas**:
+    - `200`: Vista de inicio de sesión cargada exitosamente.
+
+- `GET /registerUser`: Obtiene la vista de registro de usuario.
+  - **Respuestas**:
+    - `200`: Vista de registro de usuario cargada exitosamente.
+
+- `GET /registerPet`: Obtiene la vista de registro de mascota (requiere autenticación).
+  - **Respuestas**:
+    - `200`: Vista de registro de mascota cargada exitosamente.
+
+- `GET /about`: Obtiene la vista sobre nosotros.
+  - **Respuestas**:
+    - `200`: Vista "Sobre nosotros" cargada exitosamente.
+
+- `GET /pets`: Obtiene la vista de todas las mascotas.
+  - **Respuestas**:
+    - `200`: Vista de mascotas cargada exitosamente.
+
+- `GET /pets/:idPet/assignOwner`: Obtiene la vista para asignar un dueño a una mascota (requiere autenticación).
+  - **Parámetros**:
+    - `idPet`: ID de la mascota.
+  - **Respuestas**:
+    - `200`: Vista de asignación de dueño cargada exitosamente.
+    - `404`: Mascota no encontrada.
+    - `500`: Error al cargar la vista de asignar dueño.
+
+- `GET /profile/{email}`: Obtiene la vista del perfil de un usuario (requiere autenticación).
+  - **Parámetros**:
+    - `email`: Correo electrónico del usuario.
+  - **Respuestas**:
+    - `200`: Vista del perfil de usuario cargada exitosamente.
+    - `404`: Usuario no encontrado.
+    - `500`: Error al cargar el perfil del usuario.
+
+## Requisitos
+Para ejecutar esta aplicación, necesitas:
+- **Clave secreta** como un string en src/app.js en la linea 27 para manejar sesiones.
+- **URL** como un string en src/app.js en la linea 52 a tu instancia de MongoDB.
+- **Nombre** como un string en src/app.js en la linea 52 de una base de datos de MongoDB.
+
+## Docker
+Esta es la URL de la imagen de Docker: https://hub.docker.com/r/simonsolat/entregafinal-coderbackend3
