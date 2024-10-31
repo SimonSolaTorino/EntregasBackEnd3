@@ -170,7 +170,9 @@ Para ejecutar esta aplicación, necesitas:
 Esta es la URL de la imagen de Docker: https://hub.docker.com/r/simonsolat/entregafinal-coderbackend3
 
 ## Dependencias
+
 Este proyecto utiliza las siguientes dependencias:
+
 - `express`: Framework para construir aplicaciones web.
 - `express-session`: Middleware para manejar sesiones.
 - `mongoose`: ODM para MongoDB.
@@ -181,3 +183,7 @@ Este proyecto utiliza las siguientes dependencias:
 - `express-handlebars`: Motor de plantillas para Express.
 - `cookie-parser`: Middleware para manejar cookies.
 - `dotenv`: Cargar variables de entorno desde un archivo `.env`.
+- `chai`: Librería de aserciones para pruebas, que permite realizar afirmaciones sobre el comportamiento del código.
+- `chai-http`: Plugin de Chai que permite realizar pruebas de integración HTTP.
+- `mocha`: Framework de pruebas para ejecutar y estructurar las pruebas de JavaScript.
+- `sinon`: Librería para crear espías, stubs y mocks para pruebas, permitiendo simular el comportamiento de funciones y objetos.

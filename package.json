@@ -20,5 +20,11 @@
     "mongoose": "^8.6.3",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "chai": "^5.1.2",
+    "chai-http": "^5.1.1",
+    "mocha": "^10.8.2",
+    "sinon": "^19.0.2"
   }
 }
